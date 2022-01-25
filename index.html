@@ -141,12 +141,17 @@ for (let i = 0; i < body.data.length; i++ ){
 
 
 
-function countUnique() {
-
-
-
-
-}
+countUnique = () => {
+        const song = document.querySelectorAll("li")
+        let filteredTitles = []
+        for (let i = 0; i < song.length; i++) {
+          if (!filteredTitles.includes(song[i])) {
+            filteredTitles.push(song[i])
+          }
+        }
+        console.log(filteredTitles.length)
+      }
+      
 
 const renderData = () => {
   displayAlbum("eminem")
