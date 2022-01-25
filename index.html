@@ -11,7 +11,7 @@
   </head>
   <body>
 
-<button onclick="displayList()">Click me to see album titles</button>
+<button onclick="renderData()">Click me to see album titles</button>
 
 <button onclick="countUnique()">Click me to console unique album number</button>
 
@@ -28,35 +28,91 @@
     <script>
 
 
-function displayList(){
+// function displayList(){
 
-fetch("https://striveschool-api.herokuapp.com/api/deezer/search?q=eminem")
-.then(response => response.json())
-.then(body => {
-
-
-let Ul = document.getElementById("album-titles")
-let div = document.createElement("div")
-div.innerHTML = `<div style="border-bottom: 2px solid red; width:1000px; padding:5px;"></div>`
-Ul.appendChild(div)
-
-for (let i = 0; i < body.data.length; i++ ){
+// fetch("https://striveschool-api.herokuapp.com/api/deezer/search?q=eminem")
+// .then(response => response.json())
+// .then(body => {
 
 
-    let list = document.createElement("li")
-    list.innerHTML = body.data[i].title
+// let Ul = document.getElementById("album-titles")
+// let div = document.createElement("div")
+// div.innerHTML = `<div style="border-bottom: 2px solid red; width:1000px; padding:5px;"></div>`
+// Ul.appendChild(div)
 
-    Ul.appendChild(list)
-    Ul.classList.add("d-block")
-    console.log(body.data[i].title)
-
-}
-})
+// for (let i = 0; i < body.data.length; i++ ){
 
 
+//     let list = document.createElement("li")
+//     list.innerHTML = body.data[i].title
+
+//     Ul.appendChild(list)
+//     Ul.classList.add("d-block")
+//     console.log(body.data[i].title)
+
+// }
+// })
 
 
-fetch("https://striveschool-api.herokuapp.com/api/deezer/search?q=metallica")
+
+
+// fetch("https://striveschool-api.herokuapp.com/api/deezer/search?q=metallica")
+// .then(response => response.json())
+// .then(body => {
+    
+
+
+
+// let Ul = document.getElementById("album-titles")
+// let div = document.createElement("div")
+// div.innerHTML = `<div style="border-bottom: 2px solid red; width:1000px; padding:5px;"></div>`
+// Ul.appendChild(div)
+
+// for (let i = 0; i < body.data.length; i++ ){
+
+
+//     let list = document.createElement("li")
+//     list.innerHTML = body.data[i].title
+
+//     Ul.appendChild(list)
+//     Ul.classList.add("d-block")
+//     console.log(body.data[i].title)
+
+// }
+// })
+
+
+
+// fetch("https://striveschool-api.herokuapp.com/api/deezer/search?q=behemoth")
+// .then(response => response.json())
+// .then(body => {
+    
+
+
+
+// let Ul = document.getElementById("album-titles")
+// let div = document.createElement("div")
+// div.innerHTML = `<div style="border-bottom: 2px solid red; width:1000px; padding:5px;"></div>`
+// Ul.appendChild(div)
+
+
+// for (let i = 0; i < body.data.length; i++ ){
+
+
+//     let list = document.createElement("li")
+//     list.innerHTML = body.data[i].title
+
+//     Ul.appendChild(list)
+//     Ul.classList.add("d-block")
+//     console.log(body.data[i].title)
+
+// }
+// })
+
+// }
+
+const displayAlbum = (band) => {
+  fetch(`https://striveschool-api.herokuapp.com/api/deezer/search?q=${band}`)
 .then(response => response.json())
 .then(body => {
     
@@ -68,33 +124,6 @@ let div = document.createElement("div")
 div.innerHTML = `<div style="border-bottom: 2px solid red; width:1000px; padding:5px;"></div>`
 Ul.appendChild(div)
 
-for (let i = 0; i < body.data.length; i++ ){
-
-
-    let list = document.createElement("li")
-    list.innerHTML = body.data[i].title
-
-    Ul.appendChild(list)
-    Ul.classList.add("d-block")
-    console.log(body.data[i].title)
-
-}
-})
-
-
-
-fetch("https://striveschool-api.herokuapp.com/api/deezer/search?q=behemoth")
-.then(response => response.json())
-.then(body => {
-    
-
-
-
-let Ul = document.getElementById("album-titles")
-let div = document.createElement("div")
-div.innerHTML = `<div style="border-bottom: 2px solid red; width:1000px; padding:5px;"></div>`
-Ul.appendChild(div)
-
 
 for (let i = 0; i < body.data.length; i++ ){
 
@@ -108,7 +137,6 @@ for (let i = 0; i < body.data.length; i++ ){
 
 }
 })
-
 }
 
 
@@ -117,6 +145,13 @@ function countUnique() {
 
 
 
+
+}
+
+const renderData = () => {
+  displayAlbum("eminem")
+  displayAlbum("metallica") 
+  displayAlbum("behemoth")
 
 }
 
