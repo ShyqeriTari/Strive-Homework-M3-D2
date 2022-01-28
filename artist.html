@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="en">
 
@@ -12,7 +13,6 @@
   <script src="main.js" defer></script>
   <title>Spotify - Artist</title>
   <link rel="shortcut icon" href="/media/favicon.png" type="image/x-icon">
-  <script src="main.js" defer></script>
 
 </head>
 
@@ -269,8 +269,27 @@
                             <div></div>
                         </div>
                     </div> -->
-                    <div class="follow-btn rounded">Follow</div>
+                    <div class="follow-btn rounded" data-bs-toggle="modal" data-bs-target="#exampleModal">List albums</div>
+                    <div class="follow-btn rounded" onclick="showUnique()">Count unique</div>
                     <div class="more-controls"><i class="bi bi-three-dots"></i></div>
+                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                      <div class="modal-dialog">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Albums of this page</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                          </div>
+                          <div class="modal-body">
+                            
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                  
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    
 
                 </div>
 
@@ -308,220 +327,19 @@
                         <div class="heading">Popular</div>
 
                         <div class="popular-content-container d-flex flex-column">
+                          <div id="popular-content-container">
 
-                            <div class="ps-4 ps-4 popular-content-card d-flex justify-content-between">
+                          </div>
 
-                                <div class="d-flex align-items-center justify-content-between w-100">
-                                    
-                                    <div class="d-flex align-items-center">
-                                        <div class="number">1</div>
-                                        <img src="/media/doors-media/album_11.jpeg" alt="" width="50px">
-                                        <div class="song">Break On Through</div>
-                                    </div>
-
-                                    <div class="more-details d-flex align-items-center justify-content-between">
-                                        <div class="listen d-none d-md-block">487,413,495</div>
-                                        <div class="duration d-none d-lg-block">2:10</div>
-                                    </div>
-                                    
-                                </div>
-
-                                <div class="more-details-icon d-flex align-items-center"><i class="bi bi-three-dots-vertical d-lg-none"></i></div>
-
-                            </div>
-
-                            <div class="ps-4 popular-content-card d-flex justify-content-between">
-
-                                <div class="d-flex align-items-center justify-content-between w-100">
-                                    
-                                    <div class="d-flex align-items-center">
-                                        <div class="number">2</div>
-                                        <img src="/media/doors-media/album_1.jpg" alt="" width="50px">
-                                        <div class="song">L.A. Woman</div>
-                                    </div>
-
-                                    <div class="more-details d-flex align-items-center justify-content-between">
-                                        <div class="listen d-none d-md-block">381,750,548</div>
-                                        <div class="duration d-none d-lg-block">2:10</div>
-                                    </div>
-                                    
-                                </div>
-
-                                <div class="more-details-icon d-flex align-items-center"><i class="bi bi-three-dots-vertical d-lg-none"></i></div>
-
-                            </div>
-
-                            <div class="ps-4 popular-content-card d-flex justify-content-between">
-
-                                <div class="d-flex align-items-center justify-content-between w-100">
-                                    
-                                    <div class="d-flex align-items-center">
-                                        <div class="number">3</div>
-                                        <img src="/media/doors-media/album_10.jpeg" alt="" width="50px">
-                                        <div class="song">People Are Strange</div>
-                                    </div>
-
-                                    <div class="more-details d-flex align-items-center justify-content-between">
-                                        <div class="listen d-none d-md-block">241,010,272</div>
-                                        <div class="duration d-none d-lg-block">2:10</div>
-                                    </div>
-                                    
-                                </div>
-
-                                <div class="more-details-icon d-flex align-items-center"><i class="bi bi-three-dots-vertical d-lg-none"></i></div>
-
-                            </div>
-
-                            <div class="ps-4 popular-content-card d-flex justify-content-between">
-
-                                <div class="d-flex align-items-center justify-content-between w-100">
-                                    
-                                    <div class="d-flex align-items-center">
-                                        <div class="number">4</div>
-                                        <img src="/media/doors-media/album_5.jpeg" alt="" width="50px">
-                                        <div class="song">Love Her Madly</div>
-                                    </div>
-
-                                    <div class="more-details d-flex align-items-center justify-content-between">
-                                        <div class="listen d-none d-md-block">181,010,272</div>
-                                        <div class="duration d-none d-lg-block">2:10</div>
-                                    </div>
-                                    
-                                </div>
-
-                                <div class="more-details-icon d-flex align-items-center"><i class="bi bi-three-dots-vertical d-lg-none"></i></div>
-
-                            </div>
-                            <div class="ps-4 popular-content-card d-flex justify-content-between">
-
-                                <div class="d-flex align-items-center justify-content-between w-100">
-                                    
-                                    <div class="d-flex align-items-center">
-                                        <div class="number">5</div>
-                                        <img src="/media/doors-media/album_8.jpeg" alt="" width="50px">
-                                        <div class="song">Break On Through</div>
-                                    </div>
-
-                                    <div class="more-details d-flex align-items-center justify-content-between">
-                                        <div class="listen d-none d-md-block">157,852,357</div>
-                                        <div class="duration d-none d-lg-block">2:10</div>
-                                    </div>
-                                    
-                                </div>
-
-                                <div class="more-details-icon d-flex align-items-center"><i class="bi bi-three-dots-vertical d-lg-none"></i></div>
-
-                            </div>
 
                             <h6 class="d-none d-md-block">see more</h6>
 
                             <div class="heading">Popular releases</div>
+                            
 
                             <div class="popular-content-container d-flex flex-column">
+                              <div id ="all-songs"></div>
 
-                              <div class="ps-4 ps-4 popular-content-card d-flex justify-content-between">
-  
-                                  <div class="d-flex align-items-center justify-content-between w-100">
-                                      
-                                      <div class="d-flex align-items-center">
-                                          
-                                          <img src="/media/doors-media/album_11.jpeg" alt="" width="50px">
-                                          <div class="song">Break On Through</div>
-                                      </div>
-  
-                                      <div class="more-details d-flex align-items-center justify-content-between">
-                                          <div class="listen d-none d-md-block">487,413,495</div>
-                                          <div class="duration d-none d-lg-block">2:10</div>
-                                      </div>
-                                      
-                                  </div>
-  
-                                  <div class="more-details-icon d-flex align-items-center"><i class="bi bi-three-dots-vertical d-lg-none"></i></div>
-  
-                              </div>
-  
-                              <div class="ps-4 popular-content-card d-flex justify-content-between">
-  
-                                  <div class="d-flex align-items-center justify-content-between w-100">
-                                      
-                                      <div class="d-flex align-items-center">
-                                          
-                                          <img src="/media/doors-media/album_1.jpg" alt="" width="50px">
-                                          <div class="song">L.A. Woman</div>
-                                      </div>
-  
-                                      <div class="more-details d-flex align-items-center justify-content-between">
-                                          <div class="listen d-none d-md-block">381,750,548</div>
-                                          <div class="duration d-none d-lg-block">2:10</div>
-                                      </div>
-                                      
-                                  </div>
-  
-                                  <div class="more-details-icon d-flex align-items-center"><i class="bi bi-three-dots-vertical d-lg-none"></i></div>
-  
-                              </div>
-  
-                              <div class="ps-4 popular-content-card d-flex justify-content-between">
-  
-                                  <div class="d-flex align-items-center justify-content-between w-100">
-                                      
-                                      <div class="d-flex align-items-center">
-                                          
-                                          <img src="/media/doors-media/album_10.jpeg" alt="" width="50px">
-                                          <div class="song">People Are Strange</div>
-                                      </div>
-  
-                                      <div class="more-details d-flex align-items-center justify-content-between">
-                                          <div class="listen d-none d-md-block">241,010,272</div>
-                                          <div class="duration d-none d-lg-block">2:10</div>
-                                      </div>
-                                      
-                                  </div>
-  
-                                  <div class="more-details-icon d-flex align-items-center"><i class="bi bi-three-dots-vertical d-lg-none"></i></div>
-  
-                              </div>
-  
-                              <div class="ps-4 popular-content-card d-flex justify-content-between">
-  
-                                  <div class="d-flex align-items-center justify-content-between w-100">
-                                      
-                                      <div class="d-flex align-items-center">
-                                          
-                                          <img src="/media/doors-media/album_5.jpeg" alt="" width="50px">
-                                          <div class="song">Love Her Madly</div>
-                                      </div>
-  
-                                      <div class="more-details d-flex align-items-center justify-content-between">
-                                          <div class="listen d-none d-md-block">181,010,272</div>
-                                          <div class="duration d-none d-lg-block">2:10</div>
-                                      </div>
-                                      
-                                  </div>
-  
-                                  <div class="more-details-icon d-flex align-items-center"><i class="bi bi-three-dots-vertical d-lg-none"></i></div>
-  
-                              </div>
-                              <div class="ps-4 popular-content-card d-flex justify-content-between">
-  
-                                  <div class="d-flex align-items-center justify-content-between w-100">
-                                      
-                                      <div class="d-flex align-items-center">
-                                          
-                                          <img src="/media/doors-media/album_8.jpeg" alt="" width="50px">
-                                          <div class="song">Break On Through</div>
-                                      </div>
-  
-                                      <div class="more-details d-flex align-items-center justify-content-between">
-                                          <div class="listen d-none d-md-block">157,852,357</div>
-                                          <div class="duration d-none d-lg-block">2:10</div>
-                                      </div>
-                                      
-                                  </div>
-  
-                                  <div class="more-details-icon d-flex align-items-center"><i class="bi bi-three-dots-vertical d-lg-none"></i></div>
-  
-                              </div>
   
                               <h6 class="d-none d-md-block">see more</h6>
   

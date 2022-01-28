@@ -1,4 +1,163 @@
-// This makes the heart change its color and fill
+
+fetch("https://striveschool-api.herokuapp.com/api/deezer/search?q=eminem", {
+  "method": "GET",
+  "headers": {
+    "x-rapidapi-host": "deezerdevs-deezer.p.rapidapi.com",
+    "x-rapidapi-key": "a91386478dmsh26d5ec919787d88p121f11jsnadc153cc2fea"
+  }
+})
+.then(response => response.json())
+.then(database => {
+  console.log(database);
+  let artistHeader = document.querySelector(".header-container h1")
+  artistHeader.innerText = database.data[0].artist.name
+
+  let artistPictureDiv = document.querySelector(".artist-title-container")
+  artistPictureDiv.style.backgroundImage = `url(${database.data[0].artist.picture_big})`;
+
+  let artistPick = document.querySelector(".artist-pick")
+  artistPick.innerHTML = 
+  `
+  <div class="px-4 px-lg-0 pick-details d-flex">
+  <img src=${database.data[0].album.cover} alt="artist-pick" width="80px" height="80px">
+  <div class="d-flex flex-column">
+  <div class="d-flex align-items-center">
+  <img src=${database.data[0].artist.picture_small} alt="artist img" class="small-artist-img" width="22px" height="22px">
+  <p>Posted By ${database.data[0].artist.name}</p>
+  </div>
+  <h4>${database.data[0].album.title}</h4>
+  <p>Playlist</p>
+  </div>
+  `
+
+  let popularSection = document.querySelector("#popular-content-container")
+  let allSongs = document.querySelector("#all-songs")
+  
+  let songs = database.data 
+ for (let i = 0; i < 5; i++) {
+  let popularContentCard = document.createElement("div")
+  popularContentCard.classList = "ps-4 ps-4 popular-content-card d-flex justify-content-between"
+  popularContentCard.innerHTML = `<div class="d-flex align-items-center justify-content-between w-100">
+                                    
+  <div class="d-flex align-items-center">
+      <div class="number">${i+1}</div>
+      <img src=${songs[i].album.cover} alt="" width="50px">
+      <div class="song">${songs[i].title_short}</div>
+  </div>
+  <div class="more-details d-flex align-items-center justify-content-between">
+      <div class="listen d-none d-md-block">487,413,495</div>
+      <div class="duration d-none d-lg-block">${countMin(songs[i].duration)}</div>
+  </div>
+  
+</div>
+<div class="more-details-icon d-flex align-items-center"><i class="bi bi-three-dots-vertical d-lg-none"></i></div>`;
+  popularSection.appendChild(popularContentCard)
+ }
+
+ for (let i = 5; i < songs.length; i++) {
+  let popularContentCard = document.createElement("div")
+  popularContentCard.classList = "ps-4 ps-4 popular-content-card d-flex justify-content-between"
+  popularContentCard.innerHTML = `<div class="d-flex align-items-center justify-content-between w-100">
+                                    
+  <div class="d-flex align-items-center">
+      <div class="number">${i-5}</div>
+      <img src=${songs[i].album.cover} alt="" width="50px">
+      <div class="song">${songs[i].title_short}</div>
+  </div>
+  <div class="more-details d-flex align-items-center justify-content-between">
+      <div class="listen d-none d-md-block">487,413,495</div>
+      <div class="duration d-none d-lg-block">${countMin(songs[i].duration)}</div>
+  </div>
+  
+</div>
+<div class="more-details-icon d-flex align-items-center"><i class="bi bi-three-dots-vertical d-lg-none"></i></div>`;
+  allSongs.appendChild(popularContentCard)
+ }
+  
+  
+
+})
+.catch(err => {
+  console.error(err)
+});
+
+function countMin(s) {
+  let m = Math.floor(s/60); 
+    s -= m*60;
+    return m +":"+(s < 10 ? '0'+s : s)
+}
+
+function displayAlbums() {
+  fetch("https://striveschool-api.herokuapp.com/api/deezer/search?q=eminem", {
+  "method": "GET",
+  "headers": {
+    "x-rapidapi-host": "deezerdevs-deezer.p.rapidapi.com",
+    "x-rapidapi-key": "a91386478dmsh26d5ec919787d88p121f11jsnadc153cc2fea"
+  }
+})
+.then(response => response.json())
+.then(database => {
+
+  let albums = database.data
+  for (let album of albums) {
+    let modal = document.querySelector("#exampleModal .modal-body")
+    modal.innerHTML += `<div>${album.album.title}</div>`
+  }
+
+
+
+})
+.catch(err => {
+  console.error(err)
+});
+
+}
+displayAlbums()
+
+function showUnique() {
+  fetch("https://striveschool-api.herokuapp.com/api/deezer/search?q=eminem", {
+  "method": "GET",
+  "headers": {
+    "x-rapidapi-host": "deezerdevs-deezer.p.rapidapi.com",
+    "x-rapidapi-key": "a91386478dmsh26d5ec919787d88p121f11jsnadc153cc2fea"
+  }
+})
+.then(response => response.json())
+.then(database => {
+  let allTitles = database.data.map(x => x.album.title)
+  allTitles.sort()
+  let uniqueTitles = [];
+  let count = 0;
+  let start = false;
+
+
+  for (i = 0; i < allTitles.length; i++) {
+    for (j = 0; j < uniqueTitles.length; j++) {
+        if ( allTitles[i] == uniqueTitles[j] ) {
+            start = true;
+        }
+    }
+    count++;
+    if (count === 1 && start === false) {
+        uniqueTitles.push(allTitles[i]);
+    }
+    start = false;
+    count = 0;
+}
+  console.log(uniqueTitles)
+
+console.log(uniqueTitles.length)
+      
+
+})
+.catch(err => {
+  console.error(err)
+});
+}
+
+
+
+
 
 function changeShuffle(){
   let shuffleIconDot = document.getElementById("shuffleDot");
@@ -82,7 +241,6 @@ function changeHeart0(){
 }
 }
 
-// This toggles visibility
 
 function showPopUp(){
  let popUpPlayer = document.getElementById("pop-up-player")
@@ -90,7 +248,7 @@ function showPopUp(){
 }
 
 
-// This changed the volume icon depending on the slider value
+
 
 
 function changeVolume() {
@@ -149,9 +307,9 @@ function audioEnded () {
 audio.onended = audioEnded;
 
 function secondsToHMS(s) {
-    let m = Math.floor(s/60); // Minutes
+    let m = Math.floor(s/60); 
     s -= m*60;
-    return m +":"+(s < 10 ? '0'+s : s); //zero padding on minutes and seconds
+    return m +":"+(s < 10 ? '0'+s : s); 
 }
 
 
@@ -177,8 +335,7 @@ function setVolume() {
   volumeSlider.addEventListener("change", function(){
   audio.volume = volumeSlider.value / 100;
   })
-  // Set the volume according to the
-  // percentage of the volume slider set
+
 }
 
 setVolume()
@@ -191,12 +348,6 @@ timeline.addEventListener('change', changeSeek);
 
 
 
-// READ BELOW!!!
-// At the moment following code attached to heart-container shows proper toast 1 
-// when heart is turing to filled but not on the first click
-
-
-// This enables the first toast on the page load
 
 function fullHeartPop(){
 let heart = document.querySelector("#heart");
@@ -282,7 +433,7 @@ iconFill.addEventListener("click", function(){
 
 
 
-// This enables the speaker popover
+
 var exampleEl = document.getElementById('speaker')
 var popover = new bootstrap.Popover(exampleEl)
 
@@ -296,7 +447,7 @@ document.addEventListener("DOMContentLoaded", function(){
 
 
 
-// This updates the slider
+
 const rangeInputs = document.querySelectorAll('input[type="range"]')
 function handleInputChange2(e) {
   let target = e.target
@@ -329,3 +480,5 @@ function handleInputChange(e) {
 }
 
 audio.ontimeupdate = handleInputChange(musicTrack);
+
+
